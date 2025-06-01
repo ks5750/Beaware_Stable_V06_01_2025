@@ -1,0 +1,43 @@
+name: Direct Azure Deployment
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'
+    
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Install global packages
+      run: npm install -g tsx
+    
+    - name: Prepare deployment package
+      run: |
+        # Create a deployment package with simplified structure
+        mkdir -p ./deploy_package
+        cp -r . ./deploy_package/
+        cd ./deploy_package
+        zip -r ../deploy.zip *
+    
+    - name: Deploy to Azure
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: 'beaware-app'  # replace with your app name
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: './deploy.zip'
+        clean: true  # Clean existing files before deployment

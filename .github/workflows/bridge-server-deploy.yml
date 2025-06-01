@@ -1,0 +1,39 @@
+name: Bridge Server Deployment
+
+on:
+  workflow_dispatch:  # Manual trigger only to avoid multiple deployments
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Create deployment package
+      run: |
+        # Create unique timestamp for deployment
+        TIMESTAMP=$(date +%Y%m%d%H%M%S)
+        
+        # Create a complete deployment package with all application files
+        zip -r bridge-app-$TIMESTAMP.zip package.json package-lock.json azure.js web.config \
+          server/ shared/ client/ drizzle.config.ts tsconfig.json vite.config.ts
+        
+        echo "DEPLOY_ZIP=bridge-app-$TIMESTAMP.zip" >> $GITHUB_ENV
+    
+    - name: Deploy to Azure
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: 'beaware-app'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ${{ env.DEPLOY_ZIP }}

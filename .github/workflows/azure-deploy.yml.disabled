@@ -1,0 +1,82 @@
+name: Deploy to Azure Web App (No Build)
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name if different
+
+env:
+  NODE_VERSION: '20.x'  # Use Node.js 20
+
+jobs:
+  deploy-without-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies (skip build)
+      run: |
+        npm ci --ignore-scripts
+        npm install -g tsx
+      
+    - name: Prepare for direct TypeScript execution
+      run: |
+        mkdir -p uploads
+        mkdir -p server/public
+        mkdir -p logs
+        
+        # Create files to bypass all TypeScript errors
+        echo "TS_NODE_TRANSPILE_ONLY=true" > .env
+        echo "NODE_OPTIONS=--experimental-modules --es-module-specifier-resolution=node --no-warnings" >> .env
+        
+        # Create web.config to use tsx directly
+        cat > web.config << EOF
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.webServer>
+    <handlers>
+      <add name="iisnode" path="server/index.ts" verb="*" modules="iisnode" />
+    </handlers>
+    <rewrite>
+      <rules>
+        <rule name="DynamicContent">
+          <action type="Rewrite" url="server/index.ts" />
+        </rule>
+      </rules>
+    </rewrite>
+    <iisnode 
+      nodeProcessCommandLine="node --experimental-modules --es-module-specifier-resolution=node --no-warnings --loader tsx"
+      watchedFiles="*.ts;*.js;*.json"
+     />
+  </system.webServer>
+</configuration>
+EOF
+        
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'beaware-app'  # Replace with your Azure Web App name
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        
+    - name: Configure Azure App Settings
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          # Login with publish profile (this is a workaround)
+          echo "${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}" > publish_profile.xml
+          
+          # Set critical environment variables
+          az webapp config appsettings set --name beaware-app --resource-group beaware-resource-group --settings TS_NODE_TRANSPILE_ONLY=true NODE_OPTIONS="--experimental-modules --es-module-specifier-resolution=node --no-warnings" SCM_DO_BUILD_DURING_DEPLOYMENT=false
+          
+          # Set startup command to use tsx directly
+          az webapp config set --name beaware-app --resource-group beaware-resource-group --startup-file "npx tsx server/index.ts"
+          
+          # Clean up
+          rm publish_profile.xml

@@ -1,0 +1,343 @@
+import { useState, useEffect } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useToast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import { apiRequest } from '@/lib/api-interceptor'; // Updated import
+import { format } from 'date-fns';
+import { CheckIcon, XIcon, EyeIcon, AlertCircleIcon, UserCircleIcon, ShieldIcon } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+
+// Type definitions
+interface User {
+  id: number;
+  email: string;
+  displayName: string;
+}
+
+interface ScamReport {
+  id: number;
+  userId: number;
+  scamType: 'phone' | 'email' | 'business';
+  scamPhoneNumber: string | null;
+  scamEmail: string | null;
+  scamBusinessName: string | null;
+  incidentDate: string;
+  location: string;
+  description: string;
+  hasProofDocument: boolean;
+  proofDocumentPath: string | null;
+  proofDocumentType: string | null;
+  reportedAt: string;
+  isVerified: boolean;
+  user?: User;
+}
+
+export default function AdminPanel() {
+  const [activeTab, setActiveTab] = useState('pending');
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
+  const { user } = useAuth();
+  const [userInfo, setUserInfo] = useState<{id: number, role: string} | null>(null);
+
+  // Effect to check and display admin user info
+  useEffect(() => {
+    if (user) {
+      setUserInfo({
+        id: user.id,
+        role: user.role
+      });
+      console.log("Admin Panel - Current user:", user);
+    }
+  }, [user]);
+
+  // Get unverified (pending) scam reports
+  const { data: pendingReports, isLoading: isPendingLoading, error: pendingError, refetch: refetchPending } = useQuery({
+    queryKey: ['/api/scam-reports/unverified'],
+    queryFn: async () => {
+      const response = await apiRequest('/api/scam-reports', {
+        method: 'GET',
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch pending reports');
+      }
+      
+      const allReports = await response.json();
+      return allReports.filter((report: ScamReport) => !report.isVerified);
+    }
+  });
+
+  // Get verified scam reports
+  const { data: verifiedReports, isLoading: isVerifiedLoading, error: verifiedError, refetch: refetchVerified } = useQuery({
+    queryKey: ['/api/scam-reports/verified'],
+    queryFn: async () => {
+      const response = await apiRequest('/api/scam-reports', {
+        method: 'GET',
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch verified reports');
+      }
+      
+      const allReports = await response.json();
+      return allReports.filter((report: ScamReport) => report.isVerified);
+    }
+  });
+
+  // Verify a scam report mutation
+  const verifyMutation = useMutation({
+    mutationFn: async (reportId: number) => {
+      console.log(`Attempting to verify report ${reportId} as admin user:`, userInfo);
+      
+      const response = await apiRequest(`/api/scam-reports/${reportId}/verify`, {
+        method: 'POST',
+      });
+      
+      console.log("Verify response status:", response.status);
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Verification API error:", errorData);
+        throw new Error(errorData.message || 'Failed to verify report');
+      }
+      
+      return await response.json();
+    },
+    onSuccess: () => {
+      // Invalidate both queries to refresh data
+      queryClient.invalidateQueries({ queryKey: ['/api/scam-reports/unverified'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/scam-reports/verified'] });
+      
+      // Manually refetch to ensure updated data
+      refetchPending();
+      refetchVerified();
+      
+      toast({
+        title: 'Report Verified',
+        description: 'The scam report has been verified successfully',
+      });
+    },
+    onError: (error) => {
+      console.error("Verification mutation error:", error);
+      toast({
+        title: 'Verification Failed',
+        description: error instanceof Error ? error.message : 'Something went wrong',
+        variant: 'destructive',
+      });
+    }
+  });
+
+  // Manual verify function with confirmation
+  const handleVerify = (reportId: number) => {
+    if (confirm(`Are you sure you want to verify report #${reportId}?`)) {
+      verifyMutation.mutate(reportId);
+    }
+  };
+
+  // Format the scam identifier based on the type
+  const getScamIdentifier = (report: ScamReport) => {
+    switch (report.scamType) {
+      case 'phone':
+        return report.scamPhoneNumber;
+      case 'email':
+        return report.scamEmail;
+      case 'business':
+        return report.scamBusinessName;
+      default:
+        return 'Unknown';
+    }
+  };
+
+  // Handle errors
+  if (pendingError || verifiedError) {
+    return (
+      <div className="p-8 text-center">
+        <AlertCircleIcon className="h-12 w-12 mx-auto mb-4 text-red-500" />
+        <h2 className="text-2xl font-bold mb-2">Error Loading Admin Panel</h2>
+        <p className="mb-4">
+          {pendingError instanceof Error ? pendingError.message : 
+           verifiedError instanceof Error ? verifiedError.message : 
+           'An unknown error occurred'}
+        </p>
+        <Button onClick={() => {refetchPending(); refetchVerified();}}>
+          Try Again
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Admin Panel</h1>
+        
+        {/* Admin user info card */}
+        <Card className="p-3">
+          <div className="flex items-center gap-2">
+            <ShieldIcon className="h-5 w-5 text-green-600" />
+            <div>
+              <p className="text-sm font-medium">Logged in as Admin</p>
+              <p className="text-xs text-muted-foreground">User ID: {userInfo?.id}</p>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      <div className="bg-amber-50 border border-amber-200 p-4 rounded-md mb-6">
+        <h3 className="font-semibold text-amber-800 mb-1">Admin Instructions</h3>
+        <p className="text-sm text-amber-700">
+          As an admin, you can verify pending scam reports by clicking the "Verify" button. 
+          Once verified, reports will be publicly visible on the platform.
+        </p>
+      </div>
+
+      <Tabs defaultValue="pending" value={activeTab} onValueChange={setActiveTab}>
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="pending">
+            Pending Reports
+            {pendingReports && pendingReports.length > 0 && (
+              <Badge variant="destructive" className="ml-2">{pendingReports.length}</Badge>
+            )}
+          </TabsTrigger>
+          <TabsTrigger value="verified">Verified Reports</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="pending" className="mt-6">
+          <h2 className="text-xl font-semibold mb-4">Pending Verification</h2>
+          {isPendingLoading ? (
+            <div className="text-center py-8">Loading pending reports...</div>
+          ) : !pendingReports || pendingReports.length === 0 ? (
+            <div className="text-center py-8 text-muted-foreground">
+              <AlertCircleIcon className="h-12 w-12 mx-auto mb-2" />
+              <p>No pending reports to verify</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4">
+              {pendingReports.map((report: ScamReport) => (
+                <Card key={report.id} className="relative overflow-visible">
+                  {/* Admin action ribbon */}
+                  <div className="absolute -right-2 -top-2 bg-blue-600 text-white px-3 py-1 rounded shadow-md">
+                    <span className="text-sm font-medium">Report #{report.id}</span>
+                  </div>
+                  
+                  <CardHeader className="pb-2">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="flex items-center gap-2">
+                          <Badge>{report.scamType}</Badge>
+                          {getScamIdentifier(report)}
+                        </CardTitle>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Reported on {format(new Date(report.reportedAt), 'MMM d, yyyy')} by {report.user?.displayName || 'Unknown User'}
+                        </p>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-2">
+                      <div>
+                        <span className="font-medium">Incident Date:</span> {format(new Date(report.incidentDate), 'MMM d, yyyy')}
+                      </div>
+                      <div>
+                        <span className="font-medium">Location:</span> {report.location}
+                      </div>
+<!-- Proof Documents have been removed from the application -->
+<!-- Proof Documents have been removed from the application -->
+<!-- Proof Documents have been removed from the application -->
+                    </div>
+                    <p className="text-sm">
+                      <span className="font-medium">Description:</span> {report.description}
+                    </p>
+                    {/* Proof Documents have been removed from the application */}
+                    
+                    {/* Admin action buttons */}
+                    <div className="mt-4 pt-4 border-t border-gray-200 flex gap-2 justify-end">
+                      <Button 
+                        variant="outline"
+                        onClick={() => window.open(`/reports/${report.id}`, '_blank')}
+                      >
+                        <EyeIcon className="h-4 w-4 mr-2" /> View Details
+                      </Button>
+                      <Button 
+                        variant="default"
+                        className="bg-green-600 hover:bg-green-700"
+                        onClick={() => handleVerify(report.id)}
+                        disabled={verifyMutation.isPending}
+                      >
+                        <CheckIcon className="h-4 w-4 mr-2" /> 
+                        {verifyMutation.isPending ? 'Verifying...' : 'Approve & Verify'}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+        </TabsContent>
+        
+        <TabsContent value="verified" className="mt-6">
+          <h2 className="text-xl font-semibold mb-4">Verified Reports</h2>
+          {isVerifiedLoading ? (
+            <div className="text-center py-8">Loading verified reports...</div>
+          ) : !verifiedReports || verifiedReports.length === 0 ? (
+            <div className="text-center py-8 text-muted-foreground">
+              <AlertCircleIcon className="h-12 w-12 mx-auto mb-2" />
+              <p>No verified reports yet</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4">
+              {verifiedReports.map((report: ScamReport) => (
+                <Card key={report.id}>
+                  <CardHeader className="pb-2">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">Verified</Badge>
+                        </div>
+                        <CardTitle className="flex items-center gap-2">
+                          <Badge variant="outline">{report.scamType}</Badge>
+                          {getScamIdentifier(report)}
+                        </CardTitle>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Reported on {format(new Date(report.reportedAt), 'MMM d, yyyy')} by {report.user?.displayName || 'Unknown User'}
+                        </p>
+                      </div>
+                      <div>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => window.open(`/reports/${report.id}`, '_blank')}
+                        >
+                          <EyeIcon className="h-4 w-4 mr-1" /> View
+                        </Button>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-2">
+                      <div>
+                        <span className="font-medium">Incident Date:</span> {format(new Date(report.incidentDate), 'MMM d, yyyy')}
+                      </div>
+                      <div>
+                        <span className="font-medium">Location:</span> {report.location}
+                      </div>
+<!-- Proof Documents have been removed from the application -->
+<!-- Proof Documents have been removed from the application -->
+<!-- Proof Documents have been removed from the application -->
+                    </div>
+                    <p className="text-sm">
+                      <span className="font-medium">Description:</span> {report.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}
