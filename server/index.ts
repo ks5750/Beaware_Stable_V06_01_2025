@@ -263,7 +263,8 @@ app.use((req, res, next) => {
 
   // Serve the app using configuration from deploy-config.js
   // This serves both the API and the client
-  const port = config.server.port || 5000;
+  // Azure App Service uses the PORT environment variable
+  const port = process.env.PORT || config.server.port || 5000;
   const host = config.server.host || "0.0.0.0";
   
   server.listen({
