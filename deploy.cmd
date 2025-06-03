@@ -71,11 +71,15 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   popd
 )
 
-:: 4. Build client application
+:: 4. Build client application using Vite
 IF EXIST "%DEPLOYMENT_TARGET%\client" (
-  pushd "%DEPLOYMENT_TARGET%\client"
-  call :ExecuteCmd !NPM_CMD! run build
+  pushd "%DEPLOYMENT_TARGET%"
+  call :ExecuteCmd npx vite build
   IF !ERRORLEVEL! NEQ 0 goto error
+  
+  :: Copy built files to expected location
+  call :ExecuteCmd mkdir client\dist
+  call :ExecuteCmd xcopy /E /Y dist\public\* client\dist\
   popd
 )
 
