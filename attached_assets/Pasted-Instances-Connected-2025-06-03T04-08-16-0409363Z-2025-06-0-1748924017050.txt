@@ -1,0 +1,236 @@
+Instances
+Connected!
+2025-06-03T04:08:16.0409363Z     __ __          __      __    _ __
+2025-06-03T04:08:16.0569233Z    / //_/_  _ ____/ /_  __/ /   (_) /____
+2025-06-03T04:08:16.0583398Z   / ,< / / / / __  / / / / /   / / __/ _
+2025-06-03T04:08:16.0583744Z  / /| / /_/ / /_/ / /_/ / /___/ / /_/  __/
+2025-06-03T04:08:16.0583841Z /_/ |_\__,_/\__,_/\__,_/_____/_/\__/\___/
+2025-06-03T04:08:16.058406Z
+2025-06-03T04:08:16.0584131Z
+2025-06-03T04:08:16.0584208Z DEBUG CONSOLE | AZURE APP SERVICE ON LINUX
+2025-06-03T04:08:16.0584253Z
+2025-06-03T04:08:16.0584306Z Documentation: http://aka.ms/webapp-linux
+2025-06-03T04:08:16.0584356Z Kudu Version : 20250522.3
+2025-06-03T04:08:16.0584446Z Commit       : 9179853e09395e643a09b0c880bdd248ea7547ce
+2025-06-03T04:08:16.0584487Z
+2025-06-03T04:08:17.1736636Z chown: changing ownership of '/temp': Operation not permitted
+2025-06-03T04:08:17.2025616Z chmod: changing permissions of '/temp': Operation not permitted
+2025-06-03T04:08:22.2504836Z Restarting OpenBSD Secure Shell server: sshd.
+2025-06-03T04:08:22.3867429Z node not running, starting node /opt/webssh/index.js
+2025-06-03T04:08:33.9211621Z Tue Jun 3 04:08:33 UTC 2025 running .net core
+2025-06-03T04:08:34.8943396Z Startup : 04.08.34.881783
+2025-06-03T04:08:34.9241925Z Configure Services : 04.08.34.923903
+2025-06-03T04:08:35.3898001Z Configure : 04.08.35.389574
+2025-06-03T04:08:35.7644205Z Setting Up Routes : 04.08.35.764190
+2025-06-03T04:08:36.3833721Z Exiting Configure : 04.08.36.383182
+2025-06-03T04:08:36.8560074Z Hosting environment: Production
+2025-06-03T04:08:36.8584325Z Content root path: /opt/Kudu
+2025-06-03T04:08:36.8589547Z Now listening on: http://0.0.0.0:8181
+2025-06-03T04:08:36.8592358Z Application started. Press Ctrl+C to shut down.
+2025-06-03T04:09:12.5760224Z     __ __          __      __    _ __
+2025-06-03T04:09:12.5761971Z    / //_/_  _ ____/ /_  __/ /   (_) /____
+2025-06-03T04:09:12.5763422Z   / ,< / / / / __  / / / / /   / / __/ _
+2025-06-03T04:09:12.576356Z  / /| / /_/ / /_/ / /_/ / /___/ / /_/  __/
+2025-06-03T04:09:12.5763618Z /_/ |_\__,_/\__,_/\__,_/_____/_/\__/\___/
+2025-06-03T04:09:12.5763692Z
+2025-06-03T04:09:12.5763768Z
+2025-06-03T04:09:12.576388Z DEBUG CONSOLE | AZURE APP SERVICE ON LINUX
+2025-06-03T04:09:12.5763925Z
+2025-06-03T04:09:12.5763982Z Documentation: http://aka.ms/webapp-linux
+2025-06-03T04:09:12.5764028Z Kudu Version : 20250522.3
+2025-06-03T04:09:12.5764088Z Commit       : 9179853e09395e643a09b0c880bdd248ea7547ce
+2025-06-03T04:09:12.5764119Z
+2025-06-03T04:09:13.6598162Z chown: changing ownership of '/temp': Operation not permitted
+2025-06-03T04:09:13.6955518Z chmod: changing permissions of '/temp': Operation not permitted
+2025-06-03T04:09:24.5876064Z Restarting OpenBSD Secure Shell server: sshd.
+2025-06-03T04:09:24.870144Z node not running, starting node /opt/webssh/index.js
+2025-06-03T04:09:46.1074121Z Tue Jun 3 04:09:46 UTC 2025 running .net core
+2025-06-03T04:09:49.7362091Z Startup : 04.09.49.676320
+2025-06-03T04:09:49.7452042Z Configure Services : 04.09.49.738215
+2025-06-03T04:09:50.8514014Z Configure : 04.09.50.850878
+2025-06-03T04:09:51.6221297Z Setting Up Routes : 04.09.51.614724
+2025-06-03T04:09:52.9418294Z Exiting Configure : 04.09.52.941564
+2025-06-03T04:09:53.8803894Z Hosting environment: Production
+2025-06-03T04:09:53.880496Z Content root path: /opt/Kudu
+2025-06-03T04:09:53.8805042Z Now listening on: http://0.0.0.0:8181
+2025-06-03T04:09:53.8805104Z Application started. Press Ctrl+C to shut down.
+2025-06-03T04:10:18.3588971Z    _____
+2025-06-03T04:10:18.3887641Z   /  _  \ __________ _________   ____
+2025-06-03T04:10:18.3888091Z  /  /_\  \\___   /  |  \_  __ \_/ __ \
+2025-06-03T04:10:18.3888164Z /    |    \/    /|  |  /|  | \/\  ___/
+2025-06-03T04:10:18.3888214Z \____|__  /_____ \____/ |__|    \___  >
+2025-06-03T04:10:18.3888317Z         \/      \/                  \/
+2025-06-03T04:10:18.3888405Z A P P   S E R V I C E   O N   L I N U X
+2025-06-03T04:10:18.3888471Z
+2025-06-03T04:10:18.3888525Z Documentation: http://aka.ms/webapp-linux
+2025-06-03T04:10:18.3888573Z NodeJS quickstart: https://aka.ms/node-qs
+2025-06-03T04:10:18.3888678Z NodeJS Version : v20.19.1
+2025-06-03T04:10:18.3888731Z Note: Any data outside '/home' is not persisted
+2025-06-03T04:10:18.3888793Z
+2025-06-03T04:10:22.7451303Z Starting OpenBSD Secure Shell server: sshd.
+2025-06-03T04:10:22.8029844Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-06-03T04:10:23.1052116Z Updating certificates in /etc/ssl/certs...
+2025-06-03T04:10:43.114414Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-06-03T04:10:43.2579327Z 2 added, 0 removed; done.
+2025-06-03T04:10:43.2579937Z Running hooks in /etc/ca-certificates/update.d...
+2025-06-03T04:10:43.2881458Z done.
+2025-06-03T04:10:43.3281687Z CA certificates copied and updated successfully.
+2025-06-03T04:10:43.6834885Z Starting periodic command scheduler: cron.
+2025-06-03T04:10:43.8381266Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2025-06-03T04:10:44.1003207Z Build Operation ID: 604914886f3ec64e
+2025-06-03T04:10:44.1184573Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-06-03T04:10:44.4764487Z Writing output script to '/opt/startup/startup.sh'
+2025-06-03T04:10:44.6032771Z Running #!/bin/sh
+2025-06-03T04:10:44.6033541Z
+2025-06-03T04:10:44.603368Z # Enter the source directory to make sure the script runs where the user expects
+2025-06-03T04:10:44.603373Z cd "/home/site/wwwroot"
+2025-06-03T04:10:44.6033761Z
+2025-06-03T04:10:44.6033792Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-06-03T04:10:44.6033826Z if [ -z "$PORT" ]; then
+2025-06-03T04:10:44.6033855Z 		export PORT=8080
+2025-06-03T04:10:44.6033905Z fi
+2025-06-03T04:10:44.6033933Z
+2025-06-03T04:10:44.6033963Z echo Found tar.gz based node_modules.
+2025-06-03T04:10:44.6033996Z extractionCommand="tar -xzf node_modules.tar.gz -C /node_modules"
+2025-06-03T04:10:44.6034028Z echo "Removing existing modules directory from root..."
+2025-06-03T04:10:44.6034058Z rm -fr /node_modules
+2025-06-03T04:10:44.6034116Z mkdir -p /node_modules
+2025-06-03T04:10:44.6034171Z echo Extracting modules...
+2025-06-03T04:10:44.6034199Z $extractionCommand
+2025-06-03T04:10:44.6034397Z export NODE_PATH="/node_modules":$NODE_PATH
+2025-06-03T04:10:44.6034434Z export PATH=/node_modules/.bin:$PATH
+2025-06-03T04:10:44.6034494Z if [ -d node_modules ]; then
+2025-06-03T04:10:44.6034578Z     mv -f node_modules _del_node_modules || true
+2025-06-03T04:10:44.6034628Z fi
+2025-06-03T04:10:44.6034657Z
+2025-06-03T04:10:44.6034685Z if [ -d /node_modules ]; then
+2025-06-03T04:10:44.6034715Z     ln -sfn /node_modules ./node_modules
+2025-06-03T04:10:44.6034743Z fi
+2025-06-03T04:10:44.603477Z
+2025-06-03T04:10:44.6034798Z echo "Done."
+2025-06-03T04:10:44.6210946Z PATH="$PATH:/home/site/wwwroot" npx tsx server/index.ts
+2025-06-03T04:10:44.6235873Z Found tar.gz based node_modules.
+2025-06-03T04:10:44.6515798Z Removing existing modules directory from root...
+2025-06-03T04:10:44.6527098Z Extracting modules...
+2025-06-03T04:11:31.2674034Z Done.
+2025-06-03T04:11:34.2569089Z npm info using npm@10.9.2
+2025-06-03T04:11:34.2569658Z npm info using node@v20.19.1
+2025-06-03T04:11:41.6481134Z npm http fetch GET 200 https://registry.npmjs.org/npm 707ms
+2025-06-03T04:11:52.0407617Z npm http fetch GET 200 https://registry.npmjs.org/tsx 131ms (cache miss)
+2025-06-03T04:11:54.965937Z npm warn exec The following package was not found and will be installed: tsx@4.19.4
+2025-06-03T04:11:55.7842273Z npm http fetch GET 200 https://registry.npmjs.org/tsx 80ms (cache miss)
+2025-06-03T04:11:55.7842601Z npm http fetch GET 200 https://registry.npmjs.org/esbuild 122ms (cache miss)
+2025-06-03T04:11:55.7842642Z npm http fetch GET 200 https://registry.npmjs.org/get-tsconfig 70ms (cache miss)
+2025-06-03T04:11:55.7842678Z npm http fetch GET 200 https://registry.npmjs.org/fsevents 68ms (cache revalidated)
+2025-06-03T04:11:55.7842752Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2faix-ppc64 75ms (cache miss)
+2025-06-03T04:11:55.7842787Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fandroid-arm 81ms (cache miss)
+2025-06-03T04:11:55.7842819Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fandroid-arm64 71ms (cache miss)
+2025-06-03T04:11:55.8499362Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fandroid-x64 119ms (cache miss)
+2025-06-03T04:11:55.9334725Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fdarwin-arm64 75ms (cache miss)
+2025-06-03T04:11:56.0632595Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fdarwin-x64 120ms (cache miss)
+2025-06-03T04:11:56.1753915Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2ffreebsd-arm64 101ms (cache miss)
+2025-06-03T04:11:56.2567771Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2ffreebsd-x64 72ms (cache miss)
+2025-06-03T04:11:56.347998Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-arm 80ms (cache miss)
+2025-06-03T04:11:56.4287201Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-arm64 71ms (cache miss)
+2025-06-03T04:11:56.5103043Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-ia32 72ms (cache miss)
+2025-06-03T04:11:56.5919209Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-loong64 73ms (cache miss)
+2025-06-03T04:11:56.6757772Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-mips64el 74ms (cache miss)
+2025-06-03T04:11:56.764753Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-ppc64 80ms (cache miss)
+2025-06-03T04:11:56.8467865Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-riscv64 73ms (cache miss)
+2025-06-03T04:11:56.9275018Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-s390x 72ms (cache miss)
+2025-06-03T04:11:57.0914065Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-x64 160ms (cache miss)
+2025-06-03T04:11:57.1704161Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fnetbsd-arm64 68ms (cache miss)
+2025-06-03T04:11:57.2690038Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fnetbsd-x64 90ms (cache miss)
+2025-06-03T04:11:57.7142947Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fopenbsd-arm64 428ms (cache miss)
+2025-06-03T04:11:57.8057437Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fopenbsd-x64 73ms (cache miss)
+2025-06-03T04:11:57.894333Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fsunos-x64 74ms (cache miss)
+2025-06-03T04:11:57.990557Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fwin32-arm64 96ms (cache miss)
+2025-06-03T04:11:58.0628843Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fwin32-ia32 69ms (cache miss)
+2025-06-03T04:11:58.1443948Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fwin32-x64 78ms (cache miss)
+2025-06-03T04:11:58.2056214Z npm http fetch GET 200 https://registry.npmjs.org/resolve-pkg-maps 58ms (cache miss)
+2025-06-03T04:11:58.42565Z npm http cache resolve-pkg-maps@https://registry.npmjs.org/resolve-pkg-maps/-/resolve-pkg-maps-1.0.0.tgz 0ms (cache hit)
+2025-06-03T04:11:58.4333038Z npm http cache @esbuild/linux-x64@https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.25.5.tgz 0ms (cache hit)
+2025-06-03T04:11:58.4340211Z npm http cache get-tsconfig@https://registry.npmjs.org/get-tsconfig/-/get-tsconfig-4.10.1.tgz 0ms (cache hit)
+2025-06-03T04:11:58.4349365Z npm http cache esbuild@https://registry.npmjs.org/esbuild/-/esbuild-0.25.5.tgz 0ms (cache hit)
+2025-06-03T04:11:58.4354738Z npm http cache tsx@https://registry.npmjs.org/tsx/-/tsx-4.19.4.tgz 0ms (cache hit)
+2025-06-03T04:11:58.5796778Z npm http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 194ms
+2025-06-03T04:11:58.9503687Z npm http fetch GET 200 https://registry.npmjs.org/resolve-pkg-maps/-/resolve-pkg-maps-1.0.0.tgz 495ms (cache miss)
+2025-06-03T04:11:59.0257535Z npm http fetch GET 200 https://registry.npmjs.org/get-tsconfig/-/get-tsconfig-4.10.1.tgz 561ms (cache miss)
+2025-06-03T04:11:59.0354188Z npm http fetch GET 200 https://registry.npmjs.org/esbuild/-/esbuild-0.25.5.tgz 580ms (cache miss)
+2025-06-03T04:11:59.4746232Z npm http fetch GET 200 https://registry.npmjs.org/tsx/-/tsx-4.19.4.tgz 1003ms (cache miss)
+2025-06-03T04:12:00.1256079Z npm http fetch GET 200 https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.25.5.tgz 1673ms (cache miss)
+2025-06-03T04:12:00.9186267Z npm info run esbuild@0.25.5 postinstall node_modules/esbuild node install.js
+2025-06-03T04:12:00.9186542Z npm info run esbuild@0.25.5 postinstall { code: 0, signal: null }
+2025-06-03T04:12:23.1154853Z Connected to PostgreSQL
+2025-06-03T04:12:24.2319483Z Error: ENOENT: no such file or directory, stat '/home/site/wwwroot/client/dist/index.html'
+2025-06-03T04:12:24.3515406Z 📝 File upload functionality has been enabled
+2025-06-03T04:12:24.3515679Z 🚀 Deployment environment detected:
+2025-06-03T04:12:24.3515728Z   - Running in production mode
+2025-06-03T04:12:24.3515792Z   - Running on Azure
+2025-06-03T04:12:24.3515822Z Serving static files from: /home/site/wwwroot/uploads
+2025-06-03T04:12:24.3515852Z 🚀 Server running at http://localhost:8080
+2025-06-03T04:12:24.3515884Z ✅ Configuration validation passed
+2025-06-03T04:12:25.1643546Z Error: ENOENT: no such file or directory, stat '/home/site/wwwroot/client/dist/index.html'
+2025-06-03T04:12:25.3385854Z Error: ENOENT: no such file or directory, stat '/home/site/wwwroot/client/dist/index.html'
+2025-06-03T04:12:26.8575657Z Error: ENOENT: no such file or directory, stat '/home/site/wwwroot/client/dist/index.html'
+2025-06-03T04:12:26.8776506Z Error: ENOENT: no such file or directory, stat '/home/site/wwwroot/client/dist/index.html'
+2025-06-03T04:12:27.0002477Z Error: ENOENT: no such file or directory, stat '/home/site/wwwroot/client/dist/index.html'
+2025-06-03T04:12:37.8026779Z    _____
+2025-06-03T04:12:37.8028272Z   /  _  \ __________ _________   ____
+2025-06-03T04:12:37.8028343Z  /  /_\  \\___   /  |  \_  __ \_/ __ \
+2025-06-03T04:12:37.8028374Z /    |    \/    /|  |  /|  | \/\  ___/
+2025-06-03T04:12:37.8028403Z \____|__  /_____ \____/ |__|    \___  >
+2025-06-03T04:12:37.8028439Z         \/      \/                  \/
+2025-06-03T04:12:37.8028466Z A P P   S E R V I C E   O N   L I N U X
+2025-06-03T04:12:37.8028526Z
+2025-06-03T04:12:37.8028561Z Documentation: http://aka.ms/webapp-linux
+2025-06-03T04:12:37.8028591Z NodeJS quickstart: https://aka.ms/node-qs
+2025-06-03T04:12:37.802862Z NodeJS Version : v20.19.1
+2025-06-03T04:12:37.8028649Z Note: Any data outside '/home' is not persisted
+2025-06-03T04:12:37.8028675Z
+2025-06-03T04:12:44.5745824Z Starting OpenBSD Secure Shell server: sshd.
+2025-06-03T04:12:44.6889542Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-06-03T04:12:44.8351914Z Updating certificates in /etc/ssl/certs...
+2025-06-03T04:12:48.4723719Z Error: ENOENT: no such file or directory, stat '/home/site/wwwroot/client/dist/index.html'
+2025-06-03T04:13:00.8062302Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-06-03T04:13:00.8711968Z 2 added, 0 removed; done.
+2025-06-03T04:13:00.8815018Z Running hooks in /etc/ca-certificates/update.d...
+2025-06-03T04:13:00.8815189Z done.
+2025-06-03T04:13:00.9114379Z CA certificates copied and updated successfully.
+2025-06-03T04:13:01.2226919Z Starting periodic command scheduler: cron.
+2025-06-03T04:13:01.6035831Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2025-06-03T04:13:01.603642Z Build Operation ID: 604914886f3ec64e
+2025-06-03T04:13:01.6036467Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-06-03T04:13:02.4296725Z Writing output script to '/opt/startup/startup.sh'
+2025-06-03T04:13:03.3422245Z Running #!/bin/sh
+2025-06-03T04:13:03.3422485Z
+2025-06-03T04:13:03.3422524Z # Enter the source directory to make sure the script runs where the user expects
+2025-06-03T04:13:03.342256Z cd "/home/site/wwwroot"
+2025-06-03T04:13:03.3422621Z
+2025-06-03T04:13:03.3422652Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-06-03T04:13:03.342268Z if [ -z "$PORT" ]; then
+2025-06-03T04:13:03.3422706Z 		export PORT=8080
+2025-06-03T04:13:03.342273Z fi
+2025-06-03T04:13:03.3422754Z
+2025-06-03T04:13:03.342278Z echo Found tar.gz based node_modules.
+2025-06-03T04:13:03.3422831Z extractionCommand="tar -xzf node_modules.tar.gz -C /node_modules"
+2025-06-03T04:13:03.3422859Z echo "Removing existing modules directory from root..."
+2025-06-03T04:13:03.3422887Z rm -fr /node_modules
+2025-06-03T04:13:03.3422913Z mkdir -p /node_modules
+2025-06-03T04:13:03.3422938Z echo Extracting modules...
+2025-06-03T04:13:03.3423008Z $extractionCommand
+2025-06-03T04:13:03.3423074Z export NODE_PATH="/node_modules":$NODE_PATH
+2025-06-03T04:13:03.3423103Z export PATH=/node_modules/.bin:$PATH
+2025-06-03T04:13:03.3423129Z if [ -d node_modules ]; then
+2025-06-03T04:13:03.3423156Z     mv -f node_modules _del_node_modules || true
+2025-06-03T04:13:03.3423181Z fi
+2025-06-03T04:13:03.3423205Z
+2025-06-03T04:13:03.3423229Z if [ -d /node_modules ]; then
+2025-06-03T04:13:03.3423274Z     ln -sfn /node_modules ./node_modules
+2025-06-03T04:13:03.34233Z fi
+2025-06-03T04:13:03.3423323Z
+2025-06-03T04:13:03.3423348Z echo "Done."
+2025-06-03T04:13:03.3423375Z PATH="$PATH:/home/site/wwwroot" npx tsx server/index.ts
+2025-06-03T04:13:03.3423401Z Found tar.gz based node_modules.
+2025-06-03T04:13:03.3423428Z Removing existing modules directory from root...
+2025-06-03T04:13:03.3423475Z Extracting modules...

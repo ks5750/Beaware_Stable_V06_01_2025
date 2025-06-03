@@ -263,9 +263,9 @@ app.use((req, res, next) => {
     await setupVite(app, server);
   } else {
     // Serve static files in production
-    app.use(express.static(path.join(process.cwd(), 'client/dist')));
+    app.use(express.static(path.join(process.cwd(), 'dist/public')));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(process.cwd(), 'client/dist/index.html'));
+      res.sendFile(path.join(process.cwd(), 'dist/public/index.html'));
     });
   }
 
