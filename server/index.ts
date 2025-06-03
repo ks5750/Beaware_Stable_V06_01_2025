@@ -1,7 +1,10 @@
 import express, { type Request, Response, NextFunction } from "express";
 import * as path from "path";
 import { registerRoutes } from "./routes.js";
-import { setupVite, serveStatic, log } from "./vite.js";
+// Import vite utilities conditionally to avoid production errors
+
+// Simple logging function
+const log = (message: string) => console.log(message);
 
 // Import global deployment configuration 
 import * as fs from 'fs';
@@ -256,9 +259,14 @@ app.use((req, res, next) => {
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
   if (app.get("env") === "development") {
+    const { setupVite } = await import("./vite.js");
     await setupVite(app, server);
   } else {
-    serveStatic(app);
+    // Serve static files in production
+    app.use(express.static(path.join(process.cwd(), 'client/dist')));
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(process.cwd(), 'client/dist/index.html'));
+    });
   }
 
   // Serve the app using configuration from deploy-config.js

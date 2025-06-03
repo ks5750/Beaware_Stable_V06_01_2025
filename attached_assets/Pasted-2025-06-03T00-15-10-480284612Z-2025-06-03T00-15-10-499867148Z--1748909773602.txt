@@ -1,0 +1,131 @@
+2025-06-03T00:15:10.480284612Z     _____
+2025-06-03T00:15:10.499867148Z    /  _  \ __________ _________   ____
+2025-06-03T00:15:10.499872838Z   /  /_\  \\___   /  |  \_  __ \_/ __ \
+2025-06-03T00:15:10.499876430Z  /    |    \/    /|  |  /|  | \/\  ___/
+2025-06-03T00:15:10.499880189Z  \____|__  /_____ \____/ |__|    \___  >
+2025-06-03T00:15:10.499883311Z          \/      \/                  \/
+2025-06-03T00:15:10.499886267Z  A P P   S E R V I C E   O N   L I N U X
+2025-06-03T00:15:10.499889275Z
+2025-06-03T00:15:10.499891977Z  Documentation: http://aka.ms/webapp-linux
+2025-06-03T00:15:10.499941483Z  NodeJS quickstart: https://aka.ms/node-qs
+2025-06-03T00:15:10.499944986Z  NodeJS Version : v20.19.1
+2025-06-03T00:15:10.499947994Z  Note: Any data outside '/home' is not persisted
+2025-06-03T00:15:10.499951194Z
+2025-06-03T00:15:10.968860159Z  Starting OpenBSD Secure Shell server: sshd.
+2025-06-03T00:15:10.973322022Z  WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-06-03T00:15:10.996688724Z  Updating certificates in /etc/ssl/certs...
+2025-06-03T00:15:16.257497834Z  rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-06-03T00:15:16.306626480Z  2 added, 0 removed; done.
+2025-06-03T00:15:16.306943012Z  Running hooks in /etc/ca-certificates/update.d...
+2025-06-03T00:15:16.312625767Z  done.
+2025-06-03T00:15:16.320559543Z  CA certificates copied and updated successfully.
+2025-06-03T00:15:16.450017888Z  Starting periodic command scheduler: cron.
+2025-06-03T00:15:16.576697719Z  Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2025-06-03T00:15:16.578574796Z  Build Operation ID: 828bfd11a22d5944
+2025-06-03T00:15:16.580278086Z  Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-06-03T00:15:16.772651220Z  Writing output script to '/opt/startup/startup.sh'
+2025-06-03T00:15:16.812764615Z  Running #!/bin/sh
+2025-06-03T00:15:16.812787206Z
+2025-06-03T00:15:16.812791173Z  # Enter the source directory to make sure the script runs where the user expects
+2025-06-03T00:15:16.812795703Z  cd "/home/site/wwwroot"
+2025-06-03T00:15:16.812799203Z
+2025-06-03T00:15:16.812801855Z  export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-06-03T00:15:16.812804962Z  if [ -z "$PORT" ]; then
+2025-06-03T00:15:16.812831654Z  		export PORT=8080
+2025-06-03T00:15:16.812835798Z  fi
+2025-06-03T00:15:16.812838783Z
+2025-06-03T00:15:16.812841753Z  echo Found tar.gz based node_modules.
+2025-06-03T00:15:16.812844837Z  extractionCommand="tar -xzf node_modules.tar.gz -C /node_modules"
+2025-06-03T00:15:16.812859068Z  echo "Removing existing modules directory from root..."
+2025-06-03T00:15:16.812862563Z  rm -fr /node_modules
+2025-06-03T00:15:16.812865753Z  mkdir -p /node_modules
+2025-06-03T00:15:16.812868838Z  echo Extracting modules...
+2025-06-03T00:15:16.812871833Z  $extractionCommand
+2025-06-03T00:15:16.812874603Z  export NODE_PATH="/node_modules":$NODE_PATH
+2025-06-03T00:15:16.812877691Z  export PATH=/node_modules/.bin:$PATH
+2025-06-03T00:15:16.812880452Z  if [ -d node_modules ]; then
+2025-06-03T00:15:16.812883482Z      mv -f node_modules _del_node_modules || true
+2025-06-03T00:15:16.812886549Z  fi
+2025-06-03T00:15:16.812889622Z
+2025-06-03T00:15:16.812892643Z  if [ -d /node_modules ]; then
+2025-06-03T00:15:16.812895700Z      ln -sfn /node_modules ./node_modules
+2025-06-03T00:15:16.812898715Z  fi
+2025-06-03T00:15:16.812901490Z
+2025-06-03T00:15:16.812904230Z  echo "Done."
+2025-06-03T00:15:16.812907345Z  PATH="$PATH:/home/site/wwwroot" npx tsx server/index.ts
+2025-06-03T00:15:16.815696433Z  Found tar.gz based node_modules.
+2025-06-03T00:15:16.815921869Z  Removing existing modules directory from root...
+2025-06-03T00:15:16.821576450Z  Extracting modules...
+2025-06-03T00:15:22.747364933Z  Done.
+2025-06-03T00:15:23.719386759Z  npm info using npm@10.9.2
+2025-06-03T00:15:23.720286699Z  npm info using node@v20.19.1
+2025-06-03T00:15:24.599247990Z  npm http fetch GET 200 https://registry.npmjs.org/npm 216ms
+2025-06-03T00:15:25.523425544Z  npm http fetch GET 200 https://registry.npmjs.org/tsx 54ms (cache miss)
+2025-06-03T00:15:26.032730386Z  npm warn exec The following package was not found and will be installed: tsx@4.19.4
+2025-06-03T00:15:26.091769092Z  npm http fetch GET 200 https://registry.npmjs.org/tsx 52ms (cache miss)
+2025-06-03T00:15:26.169319692Z  npm http fetch GET 200 https://registry.npmjs.org/esbuild 72ms (cache miss)
+2025-06-03T00:15:26.226651980Z  npm http fetch GET 200 https://registry.npmjs.org/get-tsconfig 51ms (cache miss)
+2025-06-03T00:15:26.268666399Z  npm http fetch GET 200 https://registry.npmjs.org/fsevents 40ms (cache revalidated)
+2025-06-03T00:15:26.339268628Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2faix-ppc64 65ms (cache miss)
+2025-06-03T00:15:26.410501652Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fandroid-arm 69ms (cache miss)
+2025-06-03T00:15:26.467617228Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fandroid-arm64 54ms (cache miss)
+2025-06-03T00:15:26.526962579Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fandroid-x64 57ms (cache miss)
+2025-06-03T00:15:26.585857351Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fdarwin-arm64 56ms (cache miss)
+2025-06-03T00:15:26.640514768Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fdarwin-x64 53ms (cache miss)
+2025-06-03T00:15:26.701419748Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2ffreebsd-arm64 60ms (cache miss)
+2025-06-03T00:15:26.763954429Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2ffreebsd-x64 61ms (cache miss)
+2025-06-03T00:15:26.818964129Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-arm 53ms (cache miss)
+2025-06-03T00:15:26.877519237Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-arm64 57ms (cache miss)
+2025-06-03T00:15:26.939342207Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-ia32 61ms (cache miss)
+2025-06-03T00:15:26.999623998Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-loong64 58ms (cache miss)
+2025-06-03T00:15:27.083345753Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-mips64el 82ms (cache miss)
+2025-06-03T00:15:27.143943465Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-ppc64 59ms (cache miss)
+2025-06-03T00:15:27.206478618Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-riscv64 61ms (cache miss)
+2025-06-03T00:15:27.276785737Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-s390x 68ms (cache miss)
+2025-06-03T00:15:27.347842483Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2flinux-x64 69ms (cache miss)
+2025-06-03T00:15:27.403785491Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fnetbsd-arm64 54ms (cache miss)
+2025-06-03T00:15:27.482460916Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fnetbsd-x64 77ms (cache miss)
+2025-06-03T00:15:27.553761287Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fopenbsd-arm64 69ms (cache miss)
+2025-06-03T00:15:27.624434775Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fopenbsd-x64 70ms (cache miss)
+2025-06-03T00:15:27.680645197Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fsunos-x64 54ms (cache miss)
+2025-06-03T00:15:27.739600892Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fwin32-arm64 57ms (cache miss)
+2025-06-03T00:15:27.801694307Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fwin32-ia32 60ms (cache miss)
+2025-06-03T00:15:27.866953091Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild%2fwin32-x64 62ms (cache miss)
+2025-06-03T00:15:27.903789639Z  npm http fetch GET 200 https://registry.npmjs.org/resolve-pkg-maps 34ms (cache miss)
+2025-06-03T00:15:28.171648596Z  npm http cache resolve-pkg-maps@https://registry.npmjs.org/resolve-pkg-maps/-/resolve-pkg-maps-1.0.0.tgz 0ms (cache hit)
+2025-06-03T00:15:28.189822301Z  npm http cache @esbuild/linux-x64@https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.25.5.tgz 0ms (cache hit)
+2025-06-03T00:15:28.190092098Z  npm http cache get-tsconfig@https://registry.npmjs.org/get-tsconfig/-/get-tsconfig-4.10.1.tgz 0ms (cache hit)
+2025-06-03T00:15:28.190102086Z  npm http cache esbuild@https://registry.npmjs.org/esbuild/-/esbuild-0.25.5.tgz 0ms (cache hit)
+2025-06-03T00:15:28.190113782Z  npm http cache tsx@https://registry.npmjs.org/tsx/-/tsx-4.19.4.tgz 0ms (cache hit)
+2025-06-03T00:15:28.286578773Z  npm http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 125ms
+2025-06-03T00:15:28.326114907Z  npm http fetch GET 200 https://registry.npmjs.org/resolve-pkg-maps/-/resolve-pkg-maps-1.0.0.tgz 149ms (cache miss)
+2025-06-03T00:15:28.353389434Z  npm http fetch GET 200 https://registry.npmjs.org/esbuild/-/esbuild-0.25.5.tgz 175ms (cache miss)
+2025-06-03T00:15:28.356724337Z  npm http fetch GET 200 https://registry.npmjs.org/get-tsconfig/-/get-tsconfig-4.10.1.tgz 178ms (cache miss)
+2025-06-03T00:15:28.408101093Z  npm http fetch GET 200 https://registry.npmjs.org/tsx/-/tsx-4.19.4.tgz 228ms (cache miss)
+2025-06-03T00:15:28.591781093Z  npm http fetch GET 200 https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.25.5.tgz 414ms (cache miss)
+2025-06-03T00:15:28.596781771Z  npm info run esbuild@0.25.5 postinstall node_modules/esbuild node install.js
+2025-06-03T00:15:28.643042220Z  npm info run esbuild@0.25.5 postinstall { code: 0, signal: null }
+2025-06-03T00:15:29.253388482Z
+2025-06-03T00:15:29.253410238Z  node:internal/modules/run_main:123
+2025-06-03T00:15:29.253414300Z      triggerUncaughtException(
+2025-06-03T00:15:29.253417613Z      ^
+2025-06-03T00:15:29.257750604Z  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/site/wwwroot/server/vite.ts
+2025-06-03T00:15:29.257775008Z      at packageResolve (node:internal/modules/esm/resolve:873:9)
+2025-06-03T00:15:29.257779036Z      at moduleResolve (node:internal/modules/esm/resolve:946:18)
+2025-06-03T00:15:29.257782204Z      at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+2025-06-03T00:15:29.257785244Z      at nextResolve (node:internal/modules/esm/hooks:864:28)
+2025-06-03T00:15:29.257788195Z      at resolveBase (file:///root/.npm/_npx/fd45a72a545557e9/node_modules/tsx/dist/esm/index.mjs?1748909728869:2:3212)
+2025-06-03T00:15:29.257790924Z      at resolveDirectory (file:///root/.npm/_npx/fd45a72a545557e9/node_modules/tsx/dist/esm/index.mjs?1748909728869:2:3584)
+2025-06-03T00:15:29.257793939Z      at resolveTsPaths (file:///root/.npm/_npx/fd45a72a545557e9/node_modules/tsx/dist/esm/index.mjs?1748909728869:2:4073)
+2025-06-03T00:15:29.257796643Z      at async resolve (file:///root/.npm/_npx/fd45a72a545557e9/node_modules/tsx/dist/esm/index.mjs?1748909728869:2:4441)
+2025-06-03T00:15:29.257800023Z      at async nextResolve (node:internal/modules/esm/hooks:864:22)
+2025-06-03T00:15:29.257802816Z      at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+2025-06-03T00:15:29.257805403Z    code: 'ERR_MODULE_NOT_FOUND'
+2025-06-03T00:15:29.257807897Z  }
+2025-06-03T00:15:29.257825143Z
+2025-06-03T00:15:29.257828222Z  Node.js v20.19.1
+2025-06-03T00:15:29.278138032Z  npm notice
+2025-06-03T00:15:29.278155249Z  npm notice New major version of npm available! 10.9.2 -> 11.4.1
+2025-06-03T00:15:29.278225345Z  npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.4.1
+2025-06-03T00:15:29.278229504Z  npm notice To update run: npm install -g npm@11.4.1
+2025-06-03T00:15:29.278232582Z  npm notice

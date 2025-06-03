@@ -63,30 +63,18 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 :: 2. Select node version
 call :SelectNodeVersion
 
-:: 3. Install npm packages for server
+:: 3. Install npm packages including dev dependencies for build
 IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd "%DEPLOYMENT_TARGET%"
-  call :ExecuteCmd !NPM_CMD! install --production
-  IF !ERRORLEVEL! NEQ 0 goto error
-  popd
-)
-
-:: 4. Build client
-IF EXIST "%DEPLOYMENT_TARGET%\client\package.json" (
-  pushd "%DEPLOYMENT_TARGET%\client"
   call :ExecuteCmd !NPM_CMD! install
   IF !ERRORLEVEL! NEQ 0 goto error
-  call :ExecuteCmd !NPM_CMD! run build
-  IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
 
-:: 5. Compile TypeScript server
-IF EXIST "%DEPLOYMENT_TARGET%\server\tsconfig.json" (
-  pushd "%DEPLOYMENT_TARGET%"
-  call :ExecuteCmd !NPM_CMD! install typescript -g
-  IF !ERRORLEVEL! NEQ 0 goto error
-  call :ExecuteCmd tsc -p server/tsconfig.json
+:: 4. Build client application
+IF EXIST "%DEPLOYMENT_TARGET%\client" (
+  pushd "%DEPLOYMENT_TARGET%\client"
+  call :ExecuteCmd !NPM_CMD! run build
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
